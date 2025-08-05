@@ -1,9 +1,9 @@
-import subprocess
-import tempfile
-import sounddevice as sd
-import numpy as np
-import scipy.io.wavfile
-import os
+import subprocess      # To run external programs (like the Whisper CLI)
+import tempfile        # For temporary file handling
+import sounddevice as sd    # To record audio from your microphone
+import numpy as np          # For numerical arrays (used by sounddevice)
+import scipy.io.wavfile     # For saving WAV audio files
+import os                  # For file operations like deleting files
 
 WHISPER_BIN = "./server/whisper.cpp/build/bin/whisper-cli"
 WHISPER_MODEL = "./models/ggml-base.en.bin" 
@@ -12,9 +12,10 @@ def record_audio(filename="stt_temp.wav", duration=5, samplerate=16000):
     print("Recording...")
     audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1, dtype=np.int16)
     sd.wait()
-    scipy.io.wavfile.write(filename, samplerate, audio)
-    print("Saved recording:", filename)
-    return filename
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
+        scipy.io.wavfile.write(temp_file.name, samplerate, audio)
+        print("Saved recording:", temp_file.name)
+        return temp_file.name
 
 def transcribe(filename="stt_temp.wav"):
     try:
