@@ -3,3 +3,4 @@ requests
 sounddevice
 piper-tts[http]
 scripy
+openwakeword
