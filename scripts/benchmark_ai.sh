@@ -16,7 +16,7 @@ STT_RECORD_SEC=${STT_RECORD_SEC:-3}
 # LLM (llama.cpp server)
 LLM_URL=${LLM_URL:-http://127.0.0.1:8080/completion}
 LLM_PROMPT=${LLM_PROMPT:-Hello}
-LLM_NPREDICT=${LLM_NPREDICT:-16}
+LLM_NPREDICT=${LLM_NPREDICT:-64}
 
 # TTS (Piper HTTP)
 TTS_URL=${TTS_URL:-http://127.0.0.1:5000}
@@ -43,7 +43,7 @@ arecord -f S16_LE -r 16000 -c 1 -d "$STT_RECORD_SEC" "$STT_WAV" >/dev/null 2>&1
 
 # whisper.cpp prints timings to stderr; parse the number before 'ms'
 STT_MS=$(
-  "$WHISPER_BIN" -m "$WHISPER_MODEL" -f "$STT_WAV" -nt 2>&1 \
+  "$WHISPER_BIN" -t 16 -m "$WHISPER_MODEL" -f "$STT_WAV" -nt 2>&1 \
   | awk '/total time/ {print int($(NF-1)+0)}'
 )
 : "${STT_MS:=0}"
