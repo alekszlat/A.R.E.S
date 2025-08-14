@@ -7,9 +7,19 @@ import sys
 import time
 import requests
 
+#------ Configuration and Preflight Checks ------
+#Command-line flags
+MOCK_MODE = os.getenv("MOCK_MODE", "0") == "1" or "--mock" in sys.argv
+NO_PREFLIGHT = os.getenv("NO_PREFLIGHT", "0") == "1" or "--no-preflight" in sys.argv
+MAX_TURNS = int(os.getenv("MAX_TURNS", "1"))
+
 # Env or defaults
 LLM_ENDPOINT = os.getenv("LLM_ENDPOINT", "http://127.0.0.1:8080/completion")
 PIPER_URL    = os.getenv("PIPER_URL",    "http://127.0.0.1:5000")
+
+if MOCK_MODE:
+    import mocks
+    mocks.enable()
 
 def check_llm(endpoint: str, timeout_s: float = 5.0) -> bool:
     """Send a tiny prompt to the LLM server and expect HTTP 200 quickly."""
@@ -50,15 +60,23 @@ def wait_for(predicate, desc: str, attempts: int = 10, delay_s: float = 0.5) -> 
     return False
 
 # ---- Run preflight before starting your main loop ----
-if not wait_for(lambda: check_llm(LLM_ENDPOINT, timeout_s=5), "LLM server ready"):
-    sys.exit(1)
+def run_preflight_checks():
+    """Run all preflight checks and print results."""
+    if not wait_for(lambda: check_llm(LLM_ENDPOINT), "LLM server reachable"):
+        sys.exit(1)
+    if not wait_for(lambda: check_tts(PIPER_URL), "TTS server reachable"):
+        sys.exit(1)
 
-if not wait_for(lambda: check_tts(PIPER_URL, timeout_s=3), "TTS server ready"):
-    sys.exit(1)
+    print ("[Preflight] All checks passed! Starting Jarvis ...")
 
-print("[Preflight] All services healthy. Starting Jarvis…")
+# Skip preflight if MOCK_MODE or NO_PREFLIGHT is enabled
+if not (NO_PREFLIGHT or MOCK_MODE):
+    run_preflight_checks()
+else:
+    print("[Preflight] Skipping checks (MOCK_MODE or NO_PREFLIGHT enabled).")
 
 
+#------ Main Application Logic ------
 def main():
     print("Starting Jarvis AI...")
     print("🎤 Please speak after the beep (recording for 5 seconds)...")

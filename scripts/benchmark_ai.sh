@@ -79,5 +79,5 @@ fi
 
 ### ---------------- 4) Total & print row ----------------
 TOTAL_MS=$((STT_MS + LLM_MS + TTS_MS))
-echo "| $DATE | $STT_MS | $LLM_MS | $TTS_MS | $TOTAL_MS | base.en, n_predict=$LLM_NPREDICT |"
+echo "| $DATE | $STT_MS | $LLM_MS | $TTS_MS | $TOTAL_MS | base.en, n_predict=$LLM_NPREDICT |" >> docs/latency.md
 
