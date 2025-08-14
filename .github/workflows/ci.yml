@@ -32,5 +32,7 @@ jobs:
           MOCK_MODE: "1"      # enable mocks (no audio/servers)
           MAX_TURNS: "1"      # finish quickly
         run: |
+          sudo apt-get update
+          sudo apt-get install -y portaudio19-dev
           python main.py --mock
 
