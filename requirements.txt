@@ -4,3 +4,4 @@ sounddevice
 piper-tts[http]
 scipy
 openwakeword
+webrtcvad

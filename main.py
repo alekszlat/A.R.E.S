@@ -79,8 +79,8 @@ else:
 #------ Main Application Logic ------
 def main():
     print("Starting Jarvis AI...")
-    print("🎤 Please speak after the beep (recording for 5 seconds)...")
-    audio_file = stt_whisper.record_audio(duration=5)
+    print("🎤 Please speak after the beep ...")
+    audio_file = stt_whisper.record_audio(max_seconds=15)
     promt = stt_whisper.transcribe(audio_file)
     print(f"Transcribed text: {promt}")
     
