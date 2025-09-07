@@ -32,10 +32,10 @@ jobs:
       - name: Install setuptools
         run: pip install --upgrade setuptools
 
-      - name: Run main.py in MOCK mode (single turn)
+      - name: Run smokre test (mocked, no audio/servers)
         env:
           MOCK_MODE: "1"      # enable mocks (no audio/servers)
           MAX_TURNS: "1"      # finish quickly
         run: |
-          python main.py --mock --no-preflight
+          python ci_runner.py --mock --no-preflight
 
