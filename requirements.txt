@@ -5,4 +5,3 @@ piper-tts[http]
 scipy
 openwakeword
 webrtcvad
-pyaudio
