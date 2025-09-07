@@ -32,10 +32,16 @@ jobs:
       - name: Install setuptools
         run: pip install --upgrade setuptools
 
-      - name: Run smoke test (mocked, no audio/servers)
+      - name: Run smoke test (mocked)
+        timeout-minutes: 2
         env:
-          MOCK_MODE: "1"      # enable mocks (no audio/servers)
-          MAX_TURNS: "1"      # finish quickly
+          MOCK_MODE: "1"
+          NO_PREFLIGHT: "1"
+          MAX_TURNS: "1"
         run: |
-          python ci_runner.py --mock --no-preflight
+          set -euo pipefail
+          python -V
+          timeout 90s python ci_runner.py --no-preflight || {
+            echo "::error::App did not exit within 90s"; exit 1; }
+
 
