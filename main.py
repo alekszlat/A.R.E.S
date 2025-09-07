@@ -19,7 +19,6 @@ LLM_ENDPOINT = os.getenv("LLM_ENDPOINT", "http://127.0.0.1:8080/completion")
 PIPER_URL    = os.getenv("PIPER_URL",    "http://127.0.0.1:5000")
 
 if MOCK_MODE:
-    print("[Mock Mode] Enabling mock modules for headless/CI testing.")
     import mocks
     mocks.enable()
 
@@ -81,8 +80,9 @@ else:
 #------ Main Application Logic ------
 def main():
     print("Starting Jarvis AI...")
-
+    turns = 0
     while True:
+
         listener = wake_word.WakeWord_Listener()
         print("Listening for wake word...")
         if listener.listen():
@@ -101,6 +101,11 @@ def main():
             tts_piper.speak(response)
         else:
             print("No valid prompt detected. Please try again.")
+
+        turns += 1
+        if turns >= MAX_TURNS:
+            print(f"Reached MAX_TURNS={MAX_TURNS}, exiting.")
+            return 0
     
 if __name__ == "__main__":
     main()

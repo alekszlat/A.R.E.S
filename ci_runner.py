@@ -1,4 +1,5 @@
-# Enable mocks BEFORE importing main (or anything from llmio/*)
+# ci_runner.py
+import os; os.environ.setdefault("MOCK_MODE", "1")
 import mocks
 print("[Mock Mode] Enabling mock modules for CI/headless…")
 mocks.enable()
