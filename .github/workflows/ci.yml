@@ -24,6 +24,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y portaudio19-dev libportaudio2
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       
@@ -35,7 +37,5 @@ jobs:
           MOCK_MODE: "1"      # enable mocks (no audio/servers)
           MAX_TURNS: "1"      # finish quickly
         run: |
-          sudo apt-get update
-          sudo apt-get install -y portaudio19-dev libportaudio2
           python main.py --mock
 
