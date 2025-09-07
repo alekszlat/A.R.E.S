@@ -19,6 +19,7 @@ LLM_ENDPOINT = os.getenv("LLM_ENDPOINT", "http://127.0.0.1:8080/completion")
 PIPER_URL    = os.getenv("PIPER_URL",    "http://127.0.0.1:5000")
 
 if MOCK_MODE:
+    print("[Mock Mode] Enabling mock modules for headless/CI testing.")
     import mocks
     mocks.enable()
 

@@ -37,5 +37,5 @@ jobs:
           MOCK_MODE: "1"      # enable mocks (no audio/servers)
           MAX_TURNS: "1"      # finish quickly
         run: |
-          python main.py --mock
+          python main.py --mock --no-preflight
 
