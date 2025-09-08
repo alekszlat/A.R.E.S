@@ -41,7 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           python -V
-          timeout 90s python ci_runner.py --no-preflight || {
+          timeout 90s python ci_runner.py || {
             echo "::error::App did not exit within 90s"; exit 1; }
 
 
