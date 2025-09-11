@@ -43,7 +43,18 @@ class CI_Runner:
 
     def _mock_tts(self):
         mod = types.ModuleType("llmio.tts_piper")
-        mod.speak = lambda text, *a, **k: print(f"[MOCK] TTS speak: {text[:60]!r}")
+
+        class _OneShot:
+            done = False
+
+        def speak(text: str, *a, **k):
+            print(f"[MOCK] TTS speak: {text[:60]!r}")
+            # End the app right after the first full cycle
+            if not _OneShot.done:
+                _OneShot.done = True
+                raise SystemExit(0)
+
+        mod.speak = speak
         sys.modules["llmio.tts_piper"] = mod
 
     def _purge_if_loaded(self, name: str):

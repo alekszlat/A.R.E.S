@@ -11,8 +11,6 @@ Whisper.cpp flags used:
   -nt            no timestamps in output (just text)
 """
 
-from __future__ import annotations
-
 import os
 import subprocess
 import tempfile
