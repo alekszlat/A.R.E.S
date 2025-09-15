@@ -1,50 +1,65 @@
-# Jarvis AI – Local Voice Assistant
+# J.A.R.V.I.S – Local Voice Assistant
 
-Jarvis AI is a **fully local voice assistant** that uses:
-- **Whisper.cpp** for speech-to-text (STT)
-- **Llama.cpp** for natural language processing (LLM)
-- **Piper** for text-to-speech (TTS)
+Jarvis is a **fully local voice assistant** that combines:
+- 🎤 **Whisper.cpp** for speech-to-text (STT)
+- 🧠 **Llama.cpp** for natural language processing (LLM)
+- 🔊 **Piper** for text-to-speech (TTS)
+- 👂 **OpenWakeWord** for wake word detection ("Hey Jarvis")
 
-No internet connection is required for processing — all models run locally.
+⚡ Everything runs **offline** — no internet is required for processing.  
+Jarvis is designed to be modular, hackable, and extendable to control smart devices or even robots.
 
 ---
 
-## Features (Current Progress)
+## ✨ Features (Current Progress)
+
+✅ **Wake Word ("Hey Jarvis")**  
+- Powered by [OpenWakeWord](https://github.com/dscripka/openWakeWord?tab=readme-ov-file)  
+- Starts listening only after hearing the wake phrase  
+
 ✅ **Speech-to-Text (STT)**  
-- Records audio via `sounddevice` or `arecord`  
-- Uses `whisper-cli` to transcribe to text  
+- Uses `sounddevice` + `webrtcvad` for smart recording (stops when you go quiet)  
+- Transcribes audio with `whisper-cli` (from Whisper.cpp)  
 
 ✅ **Local Language Model (LLM)**  
-- Runs `llama.cpp` in server mode for prompt completion  
-- Configurable system prompts for personality (e.g., "Jarvis" style)  
+- Runs `llama.cpp` in server mode  
+- Configurable system prompt → "Jarvis"-like personality  
 
 ✅ **Text-to-Speech (TTS)**  
-- Piper HTTP server generates speech from LLM responses  
-- Supports multiple voices (e.g., `en_US-bryce-medium`)  
+- Piper HTTP server generates natural-sounding voices  
+- Multiple voices available (e.g., `en_US-bryce-medium`)  
 
 ✅ **Main Pipeline**  
-- Record → Transcribe → Send to LLM → Speak back with Piper  
+Wake Word → Record → Transcribe → Send to LLM → Speak Response
 
 ✅ **Benchmarking**  
-- `latency.md` logs STT, LLM, and TTS timings for performance tuning  
+- `benchmark_ai.sh` logs timings for STT, LLM, and TTS  
+- Results are stored in `latency.md`  
+
+✅ **CI / Mock Mode**  
+- GitHub Actions run Jarvis in **Mock Mode** (no audio hardware required)  
+- Simulates STT, LLM, and TTS responses for automated testing  
 
 ---
 
-## Current Workflow
-1. **Start LLM server**  
+## 🚀 Getting Started
+
+### 1. Install dependencies
 ```bash
-cd server/llama.cpp
-./server/run_llama_server.sh
+pip install -r requirements.txt
 ```
 
-2. **Start Piper HTTP server** 
+Also build:
+- Whisper.cpp
+- Llama.cpp
+- Piper
+
+
+### 2. Start LLM + TTS servers
 ```bash
-python3 -m piper.http_server -m en_US-bryce-medium --data-dir ./models/piper
+./scripts/run_servers.sh
 ```
 
-3. **Run Jarvis main loop** 
-```bash
-python3 main.py
-```
-
+Say "Hey Jarvis", wait for the beep 🎵, then speak your command.
+Jarvis will listen, process locally, and respond with speech.
 
