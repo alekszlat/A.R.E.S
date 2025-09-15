@@ -6,7 +6,7 @@ Jarvis is a **fully local voice assistant** that combines:
 - 🔊 **Piper** for text-to-speech (TTS)
 - 👂 **OpenWakeWord** for wake word detection ("Hey Jarvis")
 
-⚡ Everything runs **offline** — no internet is required for processing.  
+Everything runs **offline** — no internet is required for processing.  
 Jarvis is designed to be modular, hackable, and extendable to control smart devices or even robots.
 
 ---
@@ -42,7 +42,7 @@ Wake Word → Record → Transcribe → Send to LLM → Speak Response
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Install dependencies
 ```bash
@@ -50,9 +50,9 @@ pip install -r requirements.txt
 ```
 
 Also build:
-- Whisper.cpp
-- Llama.cpp
-- Piper
+- [Whisper.cpp](https://github.com/ggml-org/whisper.cpp)
+- [Llama.cpp](https://github.com/ggml-org/llama.cpp)
+- [Piper](https://github.com/rhasspy/piper)
 
 
 ### 2. Start LLM + TTS servers
@@ -63,3 +63,33 @@ Also build:
 Say "Hey Jarvis", wait for the beep 🎵, then speak your command.
 Jarvis will listen, process locally, and respond with speech.
 
+## 🧪 Development & Testing
+### Benchmark Latency
+```bash
+./scripts/benchmark_ai.sh
+```
+
+### 📂 Project Structure
+```graphql
+llmio/               # Input/output modules
+ ├─ stt_whisper.py   # Speech-to-text
+ ├─ tts_piper.py     # Text-to-speech
+ ├─ llm_remote.py    # LLM client
+ └─ wake_word.py     # Wake word listener
+
+scripts/             # Helper scripts
+ └─ run_servers.sh   # Start LLM and TTS servers
+
+latency.md           # Benchmark results
+ci_runner.py         # CI harness with mocks
+main.py              # Main application loop
+
+```
+
+### Future updates
+  - custome wake-up word
+  - custome voice
+  - device control (bluetooth)
+  - visual detection
+  - custome hardware
+  - separate server for LLM
