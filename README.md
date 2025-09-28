@@ -4,7 +4,7 @@ Ares is a **fully local voice assistant** that combines:
 - 🎤 **Whisper.cpp** for speech-to-text (STT)
 - 🧠 **Llama.cpp** for natural language processing (LLM)
 - 🔊 **Piper** for text-to-speech (TTS)
-- 👂 **OpenWakeWord** for wake word detection ("Hey Jarvis")
+- 👂 **OpenWakeWord** for wake word detection ("Hey Ares")
 
 Everything runs **offline** — no internet is required for processing.  
 Ares is designed to be modular, hackable, and extendable to control smart devices or even robots.
@@ -37,7 +37,7 @@ Wake Word → Record → Transcribe → Send to LLM → Speak Response
 - Results are stored in `latency.md`  
 
 ✅ **CI / Mock Mode**  
-- GitHub Actions run Jarvis in **Mock Mode** (no audio hardware required)  
+- GitHub Actions run Ares in **Mock Mode** (no audio hardware required)  
 - Simulates STT, LLM, and TTS responses for automated testing  
 
 ---
@@ -60,8 +60,8 @@ Also build:
 ./scripts/run_servers.sh
 ```
 
-Say "Hey Jarvis", wait for the beep 🎵, then speak your command.
-Jarvis will listen, process locally, and respond with speech.
+Say "Hey Ares", wait for the beep 🎵, then speak your command.
+Ares will listen, process locally, and respond with speech.
 
 ## 🧪 Development & Testing
 ### Benchmark Latency
@@ -86,10 +86,24 @@ main.py              # Main application loop
 
 ```
 
-## Future updates
-  - custome wake-up word
-  - custome voice
-  - device control (bluetooth)
-  - visual detection
-  - custome hardware
-  - separate server for LLM
+## ⚙️ Roadmap
+
+### Voice & Interaction
+- Custom wake word — trainable per device/user.
+- Custom voice — selectable TTS voice profiles.
+
+### Web & App Actions
+- Open websites & apps on command
+
+### Devices & I/O
+- Bluetooth device control — pair/connect/disconnect and volume controls.
+
+### Perception
+- Visual detection — optional camera input for object/face/basic scene cues.
+
+### Architecture/Security
+- Speaker recognition — per-user profiles for personalization/permissions.
+- Split LLM server — dedicated local endpoint with resource limits & auth.
+
+### Hardware
+- Custom hardware build — mic array, LEDs, physical mute, action button.
