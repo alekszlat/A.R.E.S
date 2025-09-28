@@ -103,10 +103,10 @@ main.py              # Main application loop
 
 ### Architecture/Security
 - Speaker recognition — per-user profiles for personalization/permissions.
-- Split LLM server — dedicated local endpoint with resource limits & auth.
+- Remote access (multi-device clients)
 
 ### Hardware
 - Custom hardware build — mic array, LEDs, physical mute, action button.
 
 ### UI/UX
-- User interface for better use experience 
+- User interface for better user experience 
