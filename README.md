@@ -1,19 +1,19 @@
-# J.A.R.V.I.S – Local Voice Assistant
+# A.R.E.S – Artificial Reasoning Engineered System
 
-Jarvis is a **fully local voice assistant** that combines:
+Ares is a **fully local voice assistant** that combines:
 - 🎤 **Whisper.cpp** for speech-to-text (STT)
 - 🧠 **Llama.cpp** for natural language processing (LLM)
 - 🔊 **Piper** for text-to-speech (TTS)
 - 👂 **OpenWakeWord** for wake word detection ("Hey Jarvis")
 
 Everything runs **offline** — no internet is required for processing.  
-Jarvis is designed to be modular, hackable, and extendable to control smart devices or even robots.
+Ares is designed to be modular, hackable, and extendable to control smart devices or even robots.
 
 ---
 
 ## ✨ Features (Current Progress)
 
-✅ **Wake Word ("Hey Jarvis")**  
+✅ **Wake Word ("Hey Ares/Ares")**  
 - Powered by [OpenWakeWord](https://github.com/dscripka/openWakeWord?tab=readme-ov-file)  
 - Starts listening only after hearing the wake phrase  
 
@@ -69,7 +69,7 @@ Jarvis will listen, process locally, and respond with speech.
 ./scripts/benchmark_ai.sh
 ```
 
-### 📂 Project Structure
+## 📂 Project Structure
 ```graphql
 llmio/               # Input/output modules
  ├─ stt_whisper.py   # Speech-to-text
@@ -86,7 +86,7 @@ main.py              # Main application loop
 
 ```
 
-### Future updates
+## Future updates
   - custome wake-up word
   - custome voice
   - device control (bluetooth)
