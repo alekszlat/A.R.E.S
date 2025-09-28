@@ -7,7 +7,7 @@ Ares is a **fully local voice assistant** that combines:
 - 👂 **OpenWakeWord** for wake word detection ("Hey Ares")
 
 Everything runs **offline** — no internet is required for processing.  
-Ares is designed to be modular, hackable, and extendable to control smart devices or even robots.
+Ares is designed to be modular and extendable to control smart devices or even robots.
 
 ---
 
@@ -107,3 +107,6 @@ main.py              # Main application loop
 
 ### Hardware
 - Custom hardware build — mic array, LEDs, physical mute, action button.
+
+### UI/UX
+- User interface for better use experience 
