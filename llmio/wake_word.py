@@ -5,7 +5,8 @@ from openwakeword.model import Model
 class WakeWord_Listener:
     def __init__(self):
         # Paths to models (ensure these filenames match what you downloaded)
-        self.onnx_path = "models/oww_pack/hey_jarvis_v0.1.onnx"
+        # self.onnx_path = "models/oww_pack/hey_jarvis_v0.1.onnx"
+        self.onnx_path = "models/oww_pack/hey_ares.onnx"
         self.mel_path = "models/oww_pack/melspectrogram.onnx"
         self.emb_path = "models/oww_pack/embedding_model.onnx"
         self.inference_framework = "onnx"

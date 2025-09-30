@@ -5,6 +5,8 @@ from llmio import wake_word
 
 from preflight import PreflightChecks
 
+import time
+
 #------ Main Application Logic ------
 def main():
 
@@ -16,6 +18,9 @@ def main():
         listener = wake_word.WakeWord_Listener()
         print("Listening for wake word...")
         if listener.listen():
+
+            time.sleep(0.5)  # brief pause after wake word detected
+            tts_piper.speak("Yes, sir?") 
 
             print("🎤 Please speak after the beep ...")
             audio_file = stt_whisper.record_audio(max_seconds=15)

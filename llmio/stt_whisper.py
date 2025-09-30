@@ -61,7 +61,7 @@ def record_audio(
         return vad.is_speech(frame_bytes, sample_rate=samplerate)
 
     # ---- Tell the user we’re listening ----
-    play_beep()
+    #play_beep()
     print("🎙️  listening… speak, then pause to stop")
 
     # We collect raw 30 ms frames as bytes, then write a single WAV at the end

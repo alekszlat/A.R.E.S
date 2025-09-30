@@ -35,4 +35,4 @@ def speak(text, voice=None):
             os.remove(tmp_path)
 
 if __name__ == "__main__":
-    speak("Hi, Marto! I about to tell you that I love you and my cock is hard rigth now!")
+    speak("Hi, there!")
