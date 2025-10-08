@@ -57,7 +57,7 @@ Also build:
 
 ### 2. Start LLM + TTS servers
 ```bash
-./scripts/run_servers.sh
+./server/run_servers.sh
 ```
 
 Say "Hey Ares", wait for the beep 🎵, then speak your command.
@@ -66,7 +66,7 @@ Ares will listen, process locally, and respond with speech.
 ## 🧪 Development & Testing
 ### Benchmark Latency
 ```bash
-./scripts/benchmark_ai.sh
+./docs/benchmark_ai.sh
 ```
 
 ## 📂 Project Structure
