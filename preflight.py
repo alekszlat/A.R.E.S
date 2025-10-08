@@ -82,7 +82,7 @@ class PreflightChecks:
         ok &= self.wait_for(self.check_tts, "TTS server reachable")
 
         if ok:
-            print("[Preflight] All checks passed! Starting Jarvis ...")
+            print("[Preflight] All checks passed! Starting Ares ...")
             return True
 
         if self.strict_exit:
