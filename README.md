@@ -17,11 +17,11 @@ Ares is designed to be modular and extendable to control smart devices or even r
 - Powered by [OpenWakeWord](https://github.com/dscripka/openWakeWord?tab=readme-ov-file)  
 - Starts listening only after hearing the wake phrase  
 
-✅ **Speech-to-Text (STT)**  
+✅ **Speech-to-Text (STT)**  (CPU)
 - Uses `sounddevice` + `webrtcvad` for smart recording (stops when you go quiet)  
 - Transcribes audio with `whisper-cli` (from Whisper.cpp)  
 
-✅ **Local Language Model (LLM)**  
+✅ **Local Language Model (LLM)** (GPU)  
 - Runs `llama.cpp` in server mode  
 - Configurable system prompt → "Jarvis"-like personality  
 
