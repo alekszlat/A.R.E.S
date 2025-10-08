@@ -130,7 +130,7 @@ def transcribe(wav_path: str) -> str:
 
     try:
         result = subprocess.run(
-            [WHISPER_BIN, "-m", WHISPER_MODEL, "-f", wav_path, "-nt"],
+            [WHISPER_BIN, "--no-gpu", "-m", WHISPER_MODEL, "-f", wav_path, "-nt"],
             capture_output=True,
             text=True,
             timeout=90,

@@ -10,7 +10,7 @@ class WakeWord_Listener:
         self.mel_path = "models/oww_pack/melspectrogram.onnx"
         self.emb_path = "models/oww_pack/embedding_model.onnx"
         self.inference_framework = "onnx"
-
+    
        # Audio settings: 16 kHz mono, 80 ms chunk (1280 samples)
         self.dtype     = "int16"
         self.channels  = 1

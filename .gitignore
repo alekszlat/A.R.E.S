@@ -1,4 +1,10 @@
+# Python venvs
 .venv/
+venv/
+**/.venv/
+**/venv/
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 models/llama-2-7b.Q4_0.gguf
 models/

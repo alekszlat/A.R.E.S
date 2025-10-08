@@ -81,3 +81,6 @@ fi
 TOTAL_MS=$((STT_MS + LLM_MS + TTS_MS))
 echo "| $DATE | $STT_MS | $LLM_MS | $TTS_MS | $TOTAL_MS | base.en, n_predict=$LLM_NPREDICT |" >> docs/latency.md
 
+
+### ---------------- 5) Additional commands (GPU info) ----------------
+#nvidia-smi   --query-gpu=timestamp,index,name,utilization.gpu,utilization.memory,memory.used,memory.total,temperature.gpu   --format=csv,noheader,nounits   -l 1

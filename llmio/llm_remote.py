@@ -27,7 +27,7 @@ def complete(prompt, n_predict=64):
         str: The generated text from the LLM.
     """
 
-    chat_prompt = f"{SYSTEM_PROMPT}User: {prompt}\nJarvis:"
+    chat_prompt = f"{SYSTEM_PROMPT}User: {prompt}\nAres:"
     payload = {
         "prompt": chat_prompt,         # your SYSTEM + examples + "User: ...\nJarvis: "
         "n_predict": n_predict,
@@ -44,4 +44,4 @@ def complete(prompt, n_predict=64):
         return ""
 
 if __name__ == "__main__":
-    print(complete("What is the capital of France?"))
+    print(complete("What is the meaning of life?"))

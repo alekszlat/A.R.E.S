@@ -1,4 +1,4 @@
-#!/home/zytherion/Projects/jarvis-ai/.venv/bin/python3
+#!/home/zytherion/Projects/A.R.E.S/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

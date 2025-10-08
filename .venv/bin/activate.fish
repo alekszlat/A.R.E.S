@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/zytherion/Projects/jarvis-ai/.venv
+set -gx VIRTUAL_ENV /home/zytherion/Projects/A.R.E.S/.venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
