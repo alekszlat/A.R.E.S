@@ -18,3 +18,5 @@ server/llama.cpp/*.so
 server/llama.cpp/*.a
 server/whisper.cpp/
 server/llama.cpp/
+.venv/
+venv/
