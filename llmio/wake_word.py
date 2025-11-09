@@ -7,9 +7,6 @@ class WakeWord_Listener:
         # Paths to models (ensure these filenames match what you downloaded)
         # self.onnx_path = "models/oww_pack/hey_jarvis_v0.1.onnx"
         self.onnx_path = "models/oww_pack/hey_ares.onnx"
-        self.mel_path = "models/oww_pack/melspectrogram.onnx"
-        self.emb_path = "models/oww_pack/embedding_model.onnx"
-        self.inference_framework = "onnx"
     
        # Audio settings: 16 kHz mono, 80 ms chunk (1280 samples)
         self.dtype     = "int16"
@@ -26,10 +23,7 @@ class WakeWord_Listener:
         )
 
         # Load openWakeWord model
-        self.owwModel = Model(wakeword_models=[self.onnx_path],
-                    melspec_model_path=str(self.mel_path),
-                    embedding_model_path=str(self.emb_path),
-                    inference_framework=self.inference_framework)
+        self.owwModel = Model(wakeword_model_paths=[self.onnx_path])
 
         self.n_models = len(self.owwModel.models.keys())
 

@@ -13,7 +13,7 @@ sounddevice==0.4.7
 webrtcvad==2.0.10
 
 # TTS
-piper-tts[http]==1.2.0
+piper-tts[http]
 
 # OpenWakeWord
-#pip install --no-deps "openwakeword==0.6.0"
+openwakeword
